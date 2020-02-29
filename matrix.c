@@ -35,16 +35,18 @@ struct matrix * make_translate(double x, double y, double z) {
 Inputs:  int x
          int y
          int z 
-Returns: The translation matrix creates using x, y and z
+Returns: The translation matqrix creates using x, y and z
 as the scale factors
 ====================*/
 struct matrix * make_scale(double x, double y, double z) {
   struct matrix *scale;
   scale = new_matrix(4,4);
   ident(scale);
+  print_matrix(scale);
   scale->m[0][0] = x;
   scale->m[1][1] = y;
   scale->m[2][2] = z;
+  print_matrix(scale);
   return scale;
 }
 
@@ -58,10 +60,11 @@ struct matrix * make_rotX(double theta) {
   struct matrix *rotate;
   rotate = new_matrix(4,4);
   ident(rotate);
-  rotate->m[1][1] = cos(theta);
-  rotate->m[2][1] = -1 * sin(theta);
-  rotate->m[1][2] = sin(theta);
-  rotate->m[2][2] = cos(theta);
+  double convert = 180 / M_PI;
+  rotate->m[1][1] = cos(theta * convert);
+  rotate->m[2][1] = -sin(theta * convert);
+  rotate->m[1][2] = sin(theta * convert);
+  rotate->m[2][2] = cos(theta * convert);
   return rotate;
 }
 
@@ -75,10 +78,11 @@ struct matrix * make_rotY(double theta) {
   struct matrix *rotate;
   rotate = new_matrix(4,4);
   ident(rotate);
-  rotate->m[0][0] = cos(theta);
-  rotate->m[0][2] = -1 * sin(theta);
-  rotate->m[2][0] = sin(theta);
-  rotate->m[2][2] = cos(theta);
+  double convert = 180 / M_PI;
+  rotate->m[0][0] = cos(theta * convert);
+  rotate->m[0][2] = -sin(theta * convert);
+  rotate->m[2][0] = sin(theta * convert);
+  rotate->m[2][2] = cos(theta * convert);
   return rotate;
 }
 
@@ -92,10 +96,11 @@ struct matrix * make_rotZ(double theta) {
   struct matrix *rotate;
   rotate = new_matrix(4,4);
   ident(rotate);
-  rotate->m[0][0] = cos(theta);
-  rotate->m[0][1] = -1 * sin(theta);
-  rotate->m[1][0] = sin(theta);
-  rotate->m[1][1] = cos(theta);
+  double convert = 180 / M_PI;
+  rotate->m[0][0] = cos(theta * convert);
+  rotate->m[0][1] = -sin(theta * convert);
+  rotate->m[1][0] = sin(theta * convert);
+  rotate->m[1][1] = cos(theta * convert);
   return rotate;
 }
 

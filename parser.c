@@ -89,14 +89,17 @@ void parse_file ( char * filename,
     else if (strcmp(line,"scale") == 0){
       fgets(line,255,f);
       line[strlen(line)-1]='\0';
-      sscanf(line, "%lf, %lf, %lf", &arg[0], &arg[1], &arg[2]);
+      sscanf(line, "%lf %lf %lf", &arg[0], &arg[1], &arg[2]);
       struct matrix * scale = make_scale(arg[0], arg[1], arg[2]);
+      printf("%lf\n", arg[0]);
+      printf("%lf\n", arg[1]);
+      printf("%lf\n", arg[2]);
       matrix_mult(scale, transform);
     }
-    else if (strcmp(line,"translate") == 0){
+    else if (strcmp(line,"move") == 0){
       fgets(line,255,f);
       line[strlen(line)-1]='\0';
-      sscanf(line, "%lf, %lf, %lf", &arg[0], &arg[1], &arg[2]);
+      sscanf(line, "%lf %lf %lf", &arg[0], &arg[1], &arg[2]);
       struct matrix * translate = make_translate(arg[0], arg[1], arg[2]);
       matrix_mult(translate, transform);
     }
