@@ -60,10 +60,10 @@ struct matrix * make_rotX(double theta) {
   struct matrix *rotate;
   rotate = new_matrix(4,4);
   ident(rotate);
-  double convert = 180 / M_PI;
+  double convert = M_PI / 180;
   rotate->m[1][1] = cos(theta * convert);
-  rotate->m[2][1] = -sin(theta * convert);
-  rotate->m[1][2] = sin(theta * convert);
+  rotate->m[2][1] = sin(theta * convert);
+  rotate->m[1][2] = -sin(theta * convert);
   rotate->m[2][2] = cos(theta * convert);
   return rotate;
 }
@@ -78,10 +78,10 @@ struct matrix * make_rotY(double theta) {
   struct matrix *rotate;
   rotate = new_matrix(4,4);
   ident(rotate);
-  double convert = 180 / M_PI;
+  double convert = M_PI / 180;
   rotate->m[0][0] = cos(theta * convert);
-  rotate->m[0][2] = -sin(theta * convert);
-  rotate->m[2][0] = sin(theta * convert);
+  rotate->m[0][2] = sin(theta * convert);
+  rotate->m[2][0] = -sin(theta * convert);
   rotate->m[2][2] = cos(theta * convert);
   return rotate;
 }
@@ -96,7 +96,7 @@ struct matrix * make_rotZ(double theta) {
   struct matrix *rotate;
   rotate = new_matrix(4,4);
   ident(rotate);
-  double convert = 180 / M_PI;
+  double convert = M_PI / 180;
   rotate->m[0][0] = cos(theta * convert);
   rotate->m[0][1] = -sin(theta * convert);
   rotate->m[1][0] = sin(theta * convert);
