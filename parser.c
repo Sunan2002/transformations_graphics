@@ -114,9 +114,7 @@ void parse_file ( char * filename,
         rotate = make_rotY(arg[0]);
       } else if(strcmp(axis, "z" ) == 0){
         rotate = make_rotZ(arg[0]);
-      } else{
-        rotate = make_rotZ(arg[0]);
-      }
+      }  
       matrix_mult(rotate, transform);
     }
     else if(strcmp(line, "apply" ) == 0){
