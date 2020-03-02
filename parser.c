@@ -61,8 +61,8 @@ void parse_file ( char * filename,
   char line[256];
   clear_screen(s);
   color c;
-  c.red = 0;
-  c.green = 255;
+  c.red = 255;
+  c.green = 165;
   c.blue = 0;
   double arg[7];
   char axis[2];
