@@ -60,7 +60,17 @@ void parse_file ( char * filename,
   FILE *f;
   char line[256];
   clear_screen(s);
-  color c;
+  color c;  
+
+  c.red = 26;
+  c.green = 63;
+  c.blue = 148;
+  for(int i = 0; i < YRES; i++){
+    for(int j = 0; j < XRES; j++) {
+      plot(s,c,i,j);
+    }
+  }
+
   c.red = 255;
   c.green = 165;
   c.blue = 0;
